@@ -64,7 +64,7 @@ def solve_sudoku_puzzle(args):
 if __name__ == "__main__":
     # Construct an argument parser and parse the arguments
     ap = argparse.ArgumentParser()
-    ap.add_argument("--img_fpath", default="data/sudoku_images/14.jpg", type=str, help="Path to sudoku image file")
+    ap.add_argument("--img_fpath", default="data/sudoku_images/22.jpg", type=str, help="Path to sudoku image file")
     ap.add_argument("--model_fpath", default="models/model_15_epochs_font_mnist.keras", type=str, help="Path to saved Keras CNN model")
     args = vars(ap.parse_args())
 
