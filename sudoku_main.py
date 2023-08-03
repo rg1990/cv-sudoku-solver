@@ -22,6 +22,12 @@ def solve_sudoku_puzzle(args):
     img = np.flip(img, axis=-1)
     img = sutils.resize_and_maintain_aspect_ratio(input_image=img, new_width=1000)
 
+    fig, ax = plt.subplots()
+    ax.imshow(img)
+    ax.axis('off')
+    plt.tight_layout()
+    plt.show(block=False)
+
     # Load the trained model and make prediction
     loaded_model = tf.keras.models.load_model(model_fpath)
 
@@ -58,7 +64,7 @@ def solve_sudoku_puzzle(args):
 if __name__ == "__main__":
     # Construct an argument parser and parse the arguments
     ap = argparse.ArgumentParser()
-    ap.add_argument("--img_fpath", default="data/sudoku_images/24.jpg", type=str, help="Path to sudoku image file")
+    ap.add_argument("--img_fpath", default="data/sudoku_images/14.jpg", type=str, help="Path to sudoku image file")
     ap.add_argument("--model_fpath", default="models/model_15_epochs_font_mnist.keras", type=str, help="Path to saved Keras CNN model")
     args = vars(ap.parse_args())
 
