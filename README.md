@@ -1,7 +1,7 @@
-# Sudoku Solver with Image Processing and Deep Learning
+# Sudoku Solver with Computer Vision and Deep Learning
 
 ## Introduction
-This is a Python project using image processing and deep learning to solve sudoku puzzles from natural images. The process is to take an image of a sudoku puzzle, extract the puzzle grid, identify and classify digits in each cell, solve the puzzle using a recursive backtracking algorithm, and finally display the solution back on the original image. [OpenCV](https://opencv.org/) was used for image processing, and [Keras](https://keras.io/) for the deep learning component.
+This is a Python project using computer vision and deep learning to solve sudoku puzzles from natural images. The process is to take an image of a sudoku puzzle, extract the puzzle grid, identify and classify digits in each cell, solve the puzzle using a recursive backtracking algorithm, and finally display the solution back on the original image. [OpenCV](https://opencv.org/) was used for image processing, and [Keras](https://keras.io/) for the deep learning component.
 
 A number of sample sudoku images with varied lighting, angles, and backgrounds, are provided in `data/sudoku_images/`. Please try using your own images too!
 
