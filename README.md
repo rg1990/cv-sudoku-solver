@@ -34,15 +34,15 @@ Follow these steps:
 ## Usage
 The Keras model can be trained by running `train.py`. There is already a trained model in the `models` folder, so training is optional.<br>
 
-Using the `--data` argument, you can choose whether to use font data, MNIST data, or both, by passing the values `"fonts"`, `"mnist"`, or `"both"`, respectively. Training parameters can be specified using `--batch_size` and `epochs`. Trained models are saved in the `models` folder and the model save path can be specified using `--model_save_fpath`. Example:
+Using the `--data` argument, you can choose whether to use font data, MNIST data, or both, by passing the values `"fonts"`, `"mnist"`, or `"both"`, respectively. Training parameters can be specified using `--batch_size` and `--epochs`. Trained models are saved in the `models` folder and the model save path can be specified using `--model_save_fpath`. An example:
    ``` bash
    python train.py --data "fonts" --epochs 10 --batch_size 128 --model_save_fpath "models/my_trained_model.keras"
    ```
 
 
 Follow the steps below to use the solver with your own sudoku image:
-- Prepare an image of the sudoku puzzle you want to solve.
-- Place the image in the directory `data/sudoku_images/`, or provide the image file path as the `--img_fpath` argument.
+- Prepare an image of the sudoku puzzle you want to solve and place it in `data/sudoku_images/`.
+- Provide the image file path as the `--img_fpath` argument.
 - Run the solver:
 
   ``` bash
