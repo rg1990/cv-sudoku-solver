@@ -95,7 +95,7 @@ def get_font_image_dict(excluded_names=None):
     
     '''
     
-    folder_names = glob.glob("data/EnglishFnt/Fnt/*")
+    folder_names = glob.glob("data/digit_images/*")
     digit_image_filepaths = [glob.glob(folder + "/*.png") for folder in folder_names]
     
     if excluded_names:
