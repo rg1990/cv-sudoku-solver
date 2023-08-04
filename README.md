@@ -8,13 +8,8 @@ A number of sample sudoku images with varied lighting, angles, and backgrounds, 
 TODO - Add some information about the image processing steps, the data used for training, and the network.
 
 ## Demo
-![sudoku_summary_image](https://github.com/rg1990/cv-sudoku-solver/assets/70291897/bbe14f3c-5db0-43d7-8e0a-da9457b5fb02)
-![sudoku_summary_image_2](https://github.com/rg1990/cv-sudoku-solver/assets/70291897/81810852-5189-4cb4-b099-c7a3de96faea)
-
-
-Left: Original image of unsolved puzzle.<br>
-Centre: Adaptive thresholding applied to perspective-warped image of extracted puzzle grid.<br>
-Right: Original puzzle image annotated with solutions.
+Here is a GIF that illustrates the process:<br>
+![gif_draft_6_smaller-min](https://github.com/rg1990/cv-sudoku-solver/assets/70291897/8019e24c-edb3-4dbd-9adf-083936127012)
 
 
 ## Installation
