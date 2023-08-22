@@ -5,6 +5,8 @@ This is a Python project using computer vision and deep learning to solve sudoku
 
 A number of sample sudoku images with varied lighting, angles, and backgrounds, are provided in `data/sudoku_images/`. Please try using your own images too!
 
+**Update** - This project now includes a sudoku game built using Pygame. You can choose from 30,000 pre-loaded sudoku puzzles, or you can drag and drop an image of a sudoku puzzle onto the game window, and get a playable version of the puzzle! The game includes the ability to see hints, check your answers for correctness, and view the solution. [Here is a short demo of the game in action.](https://youtu.be/9FNfExvljSk)
+
 ## Demo
 Here is a GIF that illustrates the process:<br>
 ![gif_draft_6_smaller-min](https://github.com/rg1990/cv-sudoku-solver/assets/70291897/8019e24c-edb3-4dbd-9adf-083936127012)
@@ -49,6 +51,8 @@ Follow the steps below to use the solver with your own sudoku image:
   python sudoku_main.py --img_fpath "data/sudoku_images/22.jpg"
 
 - The solver will process the image, detect the puzzle grid, classify the digits, try to solve the puzzle, and display the result.
+
+To run the game, run ```sudoku_game.py```. You can play with the built-in games, or drag-and-drop an image of your own puzzle onto the window.
 
 ## Notes
 There are some images included in this repo for which the solver fails. This can be due to one of two reasons: (1) The image processing component was unable to properly detect the grid, or (2) the deep learning model wrongly classified a digit in the sudoku puzzle, rendering the resulting puzzle unsolvable.
