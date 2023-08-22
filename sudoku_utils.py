@@ -477,7 +477,7 @@ def get_valid_cells_from_image(img):
         if len(valid_cells) == 81:
             # Assume we have found the puzzle grid
             valid_cells = sort_cells_into_grid(valid_cells)
-            plot_cell_images_in_grid(valid_cells)
+            #plot_cell_images_in_grid(valid_cells)
             return valid_cells, M, grid_image
     
     # If we don't obtain a list of valid cells, we don't return anything
