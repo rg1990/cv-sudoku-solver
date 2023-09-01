@@ -6,6 +6,10 @@ class SudokuSolver():
         self.board = board
     
     
+    def set_new_board(self, new_board):
+        self.board = new_board
+    
+    
     def print_board(self):
         num_rows = len(self.board)
         num_cols = len(self.board[0])
@@ -46,12 +50,13 @@ class SudokuSolver():
         return None
 
 
-    def is_valid_number(self, number: int, position: tuple):
+    def is_valid_number(self, board, number, position):
         '''
         Check whether or not it is valid to insert a particular number at a
         specified position on the board.
         
         Args:
+            board (list[list[int]]) - list of lists representing current puzzle state
             number (int) - the number we are testing for validity
             position (tuple) - the position on the board where number is being inserted
         Returns:
@@ -59,29 +64,28 @@ class SudokuSolver():
         '''
         
         # Assign the board dimensions to variables. Assume a square board.
-        num_rows = len(self.board)
+        num_rows = len(board)
         square_size = int(math.sqrt(num_rows))
         
         # Unpack row and column from position tuple for readability
         row_idx, col_idx = position
         
         # Check if number is already present in current row
-        if number in self.board[row_idx]:
+        if number in board[row_idx]:
             return False
         
         # Check if number is already present in current column
-        current_column_values = [self.board[row][col_idx] for row in range(num_rows)]
+        current_column_values = [board[row][col_idx] for row in range(num_rows)]
         if number in current_column_values:
             return False
         
-        # Check if number is already present in current square
         # Get indices of the square that our position lies in
         square_x_idx = col_idx // square_size
         square_y_idx = row_idx // square_size
-        
+        # Check if number is already present in current square
         for row in range(square_y_idx * square_size, (square_y_idx * square_size) + square_size):
             for col in range(square_x_idx * square_size, (square_x_idx * square_size) + square_size):
-                if self.board[row][col] == number and (row, col) != position:
+                if board[row][col] == number and (row, col) != position:
                     return False
         
         # If we reach this point, the number is valid
@@ -93,6 +97,7 @@ class SudokuSolver():
         next_empty_pos = self.find_next_empty()
         
         if not next_empty_pos:
+            # The board is full - the puzzle is solved
             return True
         else:
             row, col = next_empty_pos
@@ -100,17 +105,16 @@ class SudokuSolver():
         # Try every number at the current empty position
         for i in range(1, 10):
             # Check if number is valid in this position
-            if self.is_valid_number(number=i, position=(row, col)):
+            if self.is_valid_number(board=self.board, number=i, position=(row, col)):
                 # Put the number in the board
                 self.board[row][col] = i
                 # Now continue solving with the updated board (calling solve again)
                 if self.solve():
-                    # This means there are no more empty positions
+                    # No more empty positions - solution found
                     return True
-                else:
-                    # the call to solve with the value i placed on the board
-                    # returned False, so we now continue execution of the previous
-                    # call to solve. 
-                    self.board[row][col] = 0
-        
+    
+        # We are at a dead end and need to backtrack.
+        # Set the current cell value to 0 return False
+        # to continue execution of the previous call to solve.
+        self.board[row][col] = 0
         return False
