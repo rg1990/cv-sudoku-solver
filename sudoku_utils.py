@@ -559,7 +559,7 @@ def plot_cell_images_in_grid(cells):
 
 
 # This was previously called get_cell_predictions
-def get_predicted_digits_and_sudoku_grid(model, cells):
+def get_predicted_sudoku_grid(model, cells):
     '''
     Use a model to make predictions about which digit is present in each cell
     containing a digit. Use these predictions to construct a 2D array 
@@ -571,7 +571,6 @@ def get_predicted_digits_and_sudoku_grid(model, cells):
                 read left to right, top to bottom.
             
     Returns:
-        pred_labels: An array of integers representing predicted digits.
         grid_array: A 2D array representing the sudoku board, containing
                     the predicted digits and using zeros for empty cells.
     
@@ -586,7 +585,7 @@ def get_predicted_digits_and_sudoku_grid(model, cells):
     grid_array = np.zeros((81), dtype=int)
     grid_array[indices] = pred_labels
     grid_array = np.reshape(grid_array, newshape=(9, 9))
-    return pred_labels, grid_array
+    return grid_array
 
 
 def generate_solution_image(full_image, board_image, cells_list, solved_board_arr, M_matrix):
