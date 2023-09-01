@@ -449,7 +449,7 @@ class UserInterface():
                     # Locate grid cells in image
                     cells, M, board_image = sutils.get_valid_cells_from_image(img)
                     # Get the 2D array of the puzzle grid to be passed to the solver
-                    predicted_cell_digits, grid_array = sutils.get_predicted_digits_and_sudoku_grid(self.game_state.trained_model, cells)
+                    grid_array = sutils.get_predicted_sudoku_grid(self.game_state.trained_model, cells)
                     
                     # Check if any zeros remain in the solved board
                     solver = SudokuSolver(board=copy.deepcopy(grid_array))
@@ -458,10 +458,14 @@ class UserInterface():
                         self.game_state.get_puzzle_from_array(grid_array)
                         self.game_state.initialise_board()
                     else:
-                        raise RuntimeError("Board could not be solved. Try another image")
+                        # TODO - this needs to be sorted out properly
+                        #raise RuntimeError("Board could not be solved. Try another image")
+                        print("Board could not be solved. Try another image")
                      
-                except:
+                except RuntimeError as err:
+                    print(err)
                     print("Try a different image")
+                    #raise
     
         # Momentary button to check correctness user's entries    
         if self.check_button.check_click():
