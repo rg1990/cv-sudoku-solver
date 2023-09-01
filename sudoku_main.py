@@ -10,7 +10,6 @@ from sudoku_solver_class import SudokuSolver
 
 
 def solve_sudoku_puzzle(args):
-    
     img_fpath = args['img_fpath']
     model_fpath = args['model_fpath']
     
@@ -19,9 +18,10 @@ def solve_sudoku_puzzle(args):
         raise FileNotFoundError (f"File not found: '{img_fpath}'")
     # Load image, change color space from BGR to RGB, and resize
     img = cv2.imread(img_fpath)
-    img = np.flip(img, axis=-1)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = sutils.resize_and_maintain_aspect_ratio(input_image=img, new_width=1000)
 
+    # Plot the original image
     fig, ax = plt.subplots()
     ax.imshow(img)
     ax.axis('off')
@@ -35,7 +35,7 @@ def solve_sudoku_puzzle(args):
     cells, M, board_image = sutils.get_valid_cells_from_image(img)
 
     # Get the 2D array of the puzzle grid to be passed to the solver
-    predicted_cell_digits, grid_array = sutils.get_predicted_digits_and_sudoku_grid(loaded_model, cells)
+    grid_array = sutils.get_predicted_sudoku_grid(loaded_model, cells)
 
     # Create an instance of SudokuSolver and try to solve the puzzle
     solver = SudokuSolver(board=grid_array)
@@ -53,7 +53,7 @@ def solve_sudoku_puzzle(args):
         plt.show(block=False)
 
     else:
-        # We failed to solve the board. Print it out for examination
+        # We failed to solve the board.
         print("Could not solve the puzzle. Check for misclassified digits.\n")
 
     # Print the board whether or not it's solved
