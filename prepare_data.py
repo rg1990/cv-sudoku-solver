@@ -100,7 +100,7 @@ def get_font_image_dict(excluded_names=None):
         digit_image_filepaths = [[fpath_list[i] for i in inclusion_list_indices] for fpath_list in digit_image_filepaths]
     
     # Create dictionary and load images from file
-    img_dict = {i+1: None for i in range(9)}
+    img_dict = {i: None for i in range(1, 10)}
     for k in img_dict:
         img_dict[k] = [cv2.imread(fpath) for fpath in digit_image_filepaths[k-1]]
     
